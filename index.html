@@ -173,6 +173,47 @@
   table.kw-table tr:hover td{background:var(--chip-bg)}
   [hidden]{display:none!important}
 
+  .trending{
+    margin-top:22px;
+  }
+  .trending h2{
+    font-size:14px;
+    font-weight:600;
+    margin:0 0 8px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .trending-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .trending-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    padding:6px 12px;
+    border-radius:999px;
+    background:var(--chip-bg);
+    border:1px solid var(--border);
+  }
+  .trending-chip .rank{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:11px;
+    color:var(--accent-hot);
+    font-weight:600;
+  }
+  .trending-empty{
+    font-size:12.5px;
+    color:var(--fg-muted);
+    line-height:1.6;
+  }
+
   .sns-note{
     margin-top:16px;
     padding:12px 14px;
@@ -336,6 +377,12 @@
 
 <ul class="sr-only" id="kw-sr-list"></ul>
 
+<section class="trending" id="trending-section" hidden>
+  <h2>🔥 지금 급상승 검색어 <span style="font-weight:400;color:var(--fg-muted);font-size:12px">(구글 트렌드)</span></h2>
+  <ul class="trending-list" id="trending-list"></ul>
+  <p class="trending-empty" id="trending-empty" hidden></p>
+</section>
+
 <div class="sns-note" id="sns-note"></div>
 
 <section class="sources">
@@ -425,10 +472,39 @@
     document.getElementById("collected-at").textContent = "수집 " + (data.collected_at || "-");
 
     renderSources(data);
+    renderTrending(data);
     renderSrList(kws);
     renderTable(kws);
     computeLayout(kws);
     drawCloud();
+  }
+
+  function renderTrending(data){
+    var section = document.getElementById("trending-section");
+    var list = document.getElementById("trending-list");
+    var empty = document.getElementById("trending-empty");
+    var items = data.trending_now || [];
+    list.innerHTML = "";
+    if(items.length === 0){
+      section.hidden = !data.trending_now_note; // 아예 필드가 없으면(구버전 데이터) 섹션 자체를 숨김
+      empty.hidden = !data.trending_now_note;
+      empty.textContent = data.trending_now_note || "";
+      return;
+    }
+    section.hidden = false;
+    empty.hidden = true;
+    items.forEach(function(item){
+      var li = document.createElement("li");
+      li.className = "trending-chip";
+      var rank = document.createElement("span");
+      rank.className = "rank";
+      rank.textContent = item.rank;
+      var word = document.createElement("span");
+      word.textContent = item.word;
+      li.appendChild(rank);
+      li.appendChild(word);
+      list.appendChild(li);
+    });
   }
 
   function renderSources(data){

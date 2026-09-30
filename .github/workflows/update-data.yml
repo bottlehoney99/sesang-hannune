@@ -1,0 +1,46 @@
+name: 세상 한눈에 - 일일 데이터 갱신
+
+on:
+  schedule:
+    # 매일 00:07 UTC = 한국시간(KST) 09:07
+    - cron: "7 0 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: worldglance-data-update
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build worldglance-data.json (RSS keywords + Google Trends)
+        run: python scripts/build_data.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "worldglance-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --quiet -- worldglance-data.json; then
+            echo "No data changes, skipping commit."
+          else
+            git add worldglance-data.json
+            git commit -m "chore: daily data refresh ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi
