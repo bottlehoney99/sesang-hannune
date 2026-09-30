@@ -1,0 +1,654 @@
+<title>세상 한눈에</title>
+<style>
+  :root{
+    --bg:#f6f6f3;
+    --surface:#ffffff;
+    --surface-2:#eef0ec;
+    --fg:#181a1d;
+    --fg-muted:#5c6167;
+    --border:#dfe1dc;
+    --accent-cool:#2f6fa8;
+    --accent-hot:#d9481f;
+    --chip-bg:#ecefe9;
+    --shadow:0 1px 2px rgba(20,20,15,.06),0 8px 24px rgba(20,20,15,.06);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#101215;
+      --surface:#181b20;
+      --surface-2:#1f232a;
+      --fg:#edeee9;
+      --fg-muted:#9a9fa6;
+      --border:#2b2f36;
+      --accent-cool:#6fa8dc;
+      --accent-hot:#ff8355;
+      --chip-bg:#20242b;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101215;
+    --surface:#181b20;
+    --surface-2:#1f232a;
+    --fg:#edeee9;
+    --fg-muted:#9a9fa6;
+    --border:#2b2f36;
+    --accent-cool:#6fa8dc;
+    --accent-hot:#ff8355;
+    --chip-bg:#20242b;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'Noto Sans KR','Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;
+    padding-inline:16px;
+    padding-block:20px 40px;
+    max-width:960px;
+    margin:0 auto;
+  }
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+  header.masthead{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    border-bottom:2px solid var(--fg);
+    padding-bottom:16px;
+    margin-bottom:20px;
+  }
+  .masthead-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  h1{
+    font-family:'Black Han Sans','Noto Sans KR',sans-serif;
+    font-weight:400;
+    font-size:clamp(28px,6vw,40px);
+    letter-spacing:-0.01em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .collected-at{
+    font-size:12px;
+    color:var(--fg-muted);
+    white-space:nowrap;
+  }
+  .tagline{
+    font-size:15px;
+    color:var(--fg-muted);
+    margin:0;
+  }
+
+  .toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .toolbar-title{
+    font-size:13px;
+    color:var(--fg-muted);
+  }
+  button.toggle{
+    font:inherit;
+    font-size:13px;
+    background:var(--chip-bg);
+    color:var(--fg);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:6px 14px;
+    cursor:pointer;
+  }
+  button.toggle:hover{border-color:var(--fg-muted)}
+
+  .cloud-wrap{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  #cloud-canvas{
+    display:block;
+    width:100%;
+    height:min(70vh,560px);
+    cursor:pointer;
+  }
+  .cloud-empty{
+    padding:40px 16px;
+    text-align:center;
+    color:var(--fg-muted);
+    font-size:14px;
+  }
+
+  .legend{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+    font-size:12px;
+    color:var(--fg-muted);
+  }
+  .legend-bar{
+    flex:1;
+    height:8px;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--accent-cool),var(--accent-hot));
+  }
+
+  table.kw-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    margin-top:8px;
+  }
+  table.kw-table th,table.kw-table td{
+    text-align:left;
+    padding:8px 6px;
+    border-bottom:1px solid var(--border);
+  }
+  table.kw-table th{
+    color:var(--fg-muted);
+    font-weight:500;
+    font-size:12px;
+  }
+  table.kw-table td.count{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    text-align:right;
+    white-space:nowrap;
+  }
+  table.kw-table tr{cursor:pointer}
+  table.kw-table tr:hover td{background:var(--chip-bg)}
+  [hidden]{display:none!important}
+
+  .sns-note{
+    margin-top:16px;
+    padding:12px 14px;
+    background:var(--chip-bg);
+    border-radius:10px;
+    font-size:13px;
+    color:var(--fg-muted);
+    line-height:1.5;
+  }
+
+  .sources{
+    margin-top:28px;
+  }
+  .sources h2{
+    font-size:14px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .source-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .source-chip{
+    font-size:12px;
+    padding:4px 10px;
+    border-radius:999px;
+    background:var(--chip-bg);
+    border:1px solid var(--border);
+    color:var(--fg-muted);
+  }
+  .source-chip.fail{
+    text-decoration:line-through;
+    opacity:.6;
+  }
+  .method-note{
+    margin-top:10px;
+    font-size:12.5px;
+    color:var(--fg-muted);
+    line-height:1.6;
+  }
+
+  /* drawer */
+  .scrim{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease;
+    z-index:10;
+  }
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    max-width:960px;
+    margin:0 auto;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-bottom:none;
+    border-radius:20px 20px 0 0;
+    box-shadow:0 -8px 28px rgba(0,0,0,.18);
+    transform:translateY(100%);
+    transition:transform .22s ease;
+    z-index:11;
+    max-height:80vh;
+    display:flex;
+    flex-direction:column;
+    padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  }
+  .drawer.open{transform:translateY(0)}
+  .drawer-handle{
+    width:36px;height:4px;border-radius:999px;
+    background:var(--border);
+    margin:10px auto 4px;
+  }
+  .drawer-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px;
+    padding:6px 20px 12px;
+    border-bottom:1px solid var(--border);
+  }
+  .drawer-head h3{
+    margin:0;
+    font-size:20px;
+  }
+  .drawer-head .count-badge{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;
+    color:var(--fg-muted);
+  }
+  .drawer-close{
+    background:none;border:none;color:var(--fg-muted);
+    font-size:20px;line-height:1;cursor:pointer;padding:4px 6px;
+  }
+  .drawer-body{
+    overflow-y:auto;
+    padding:12px 20px 4px;
+  }
+  .article-item{
+    display:block;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    text-decoration:none;
+    color:var(--fg);
+  }
+  .article-item:last-child{border-bottom:none}
+  .article-title{
+    font-size:14.5px;
+    line-height:1.45;
+  }
+  .article-src{
+    font-size:12px;
+    color:var(--fg-muted);
+    margin-top:3px;
+  }
+
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+<header class="masthead">
+  <div class="masthead-top">
+    <h1>세상 한눈에</h1>
+    <span class="collected-at mono" id="collected-at">불러오는 중…</span>
+  </div>
+  <p class="tagline">바쁜 현대인을 위한 세상만사 한눈으로 보기 — 오늘 한국 뉴스 제목에 가장 많이 등장한 단어들</p>
+</header>
+
+<div class="toolbar">
+  <span class="toolbar-title" id="toolbar-title">단어를 누르면 관련 기사를 볼 수 있어요</span>
+  <button class="toggle" id="view-toggle" type="button">표로 보기</button>
+</div>
+
+<div class="cloud-wrap" id="cloud-wrap">
+  <canvas id="cloud-canvas" aria-hidden="true"></canvas>
+  <div class="cloud-empty" id="cloud-empty" hidden>아직 표시할 키워드가 없습니다.</div>
+</div>
+
+<div class="legend" aria-hidden="true">
+  <span>적게 언급</span>
+  <span class="legend-bar"></span>
+  <span>많이 언급</span>
+</div>
+
+<table class="kw-table" id="kw-table" hidden>
+  <thead><tr><th>키워드</th><th style="text-align:right">언급 기사 수</th></tr></thead>
+  <tbody id="kw-tbody"></tbody>
+</table>
+
+<ul class="sr-only" id="kw-sr-list"></ul>
+
+<div class="sns-note" id="sns-note"></div>
+
+<section class="sources">
+  <h2>데이터 출처</h2>
+  <ul class="source-list" id="source-list"></ul>
+  <p class="method-note" id="method-note"></p>
+</section>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-word">
+  <div class="drawer-handle"></div>
+  <div class="drawer-head">
+    <div>
+      <h3 id="drawer-word">-</h3>
+    </div>
+    <span class="count-badge" id="drawer-count"></span>
+    <button class="drawer-close" id="drawer-close" aria-label="닫기">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var state = {
+    data: null,
+    layout: [],       // [{word,count,x,y,w,h,fontSize,color}]
+    tableMode: false,
+    dpr: Math.max(1, Math.min(2, window.devicePixelRatio || 1))
+  };
+
+  var canvas = document.getElementById("cloud-canvas");
+  var ctx = canvas.getContext("2d");
+  var cloudEmpty = document.getElementById("cloud-empty");
+  var scrim = document.getElementById("scrim");
+  var drawer = document.getElementById("drawer");
+  var drawerWord = document.getElementById("drawer-word");
+  var drawerCount = document.getElementById("drawer-count");
+  var drawerBody = document.getElementById("drawer-body");
+  var drawerClose = document.getElementById("drawer-close");
+  var viewToggle = document.getElementById("view-toggle");
+  var kwTable = document.getElementById("kw-table");
+  var kwTbody = document.getElementById("kw-tbody");
+
+  function css(varName){
+    return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  }
+
+  function hexToRgb(hex){
+    hex = hex.replace('#','');
+    if(hex.length===3){ hex = hex.split('').map(function(c){return c+c;}).join(''); }
+    var n = parseInt(hex,16);
+    return [(n>>16)&255,(n>>8)&255,n&255];
+  }
+  function mixColor(hexA,hexB,t){
+    var a = hexToRgb(hexA), b = hexToRgb(hexB);
+    var r = Math.round(a[0]+(b[0]-a[0])*t);
+    var g = Math.round(a[1]+(b[1]-a[1])*t);
+    var bl = Math.round(a[2]+(b[2]-a[2])*t);
+    return "rgb("+r+","+g+","+bl+")";
+  }
+
+  function fetchData(){
+    fetch("worldglance-data.json",{cache:"no-store"})
+      .then(function(res){
+        if(!res.ok) throw new Error("HTTP "+res.status);
+        return res.json();
+      })
+      .then(function(data){
+        state.data = data;
+        render(data);
+      })
+      .catch(function(err){
+        cloudEmpty.hidden = false;
+        cloudEmpty.textContent = "데이터 파일(worldglance-data.json)을 불러오지 못했습니다. 잠시 후 새로고침해 주세요.";
+        document.getElementById("collected-at").textContent = "수집 시각 확인 불가";
+      });
+  }
+
+  function render(data){
+    var kws = (data.keywords || []).slice();
+    if(kws.length === 0){
+      cloudEmpty.hidden = false;
+      return;
+    }
+    document.getElementById("collected-at").textContent = "수집 " + (data.collected_at || "-");
+
+    renderSources(data);
+    renderSrList(kws);
+    renderTable(kws);
+    computeLayout(kws);
+    drawCloud();
+  }
+
+  function renderSources(data){
+    var srcList = document.getElementById("source-list");
+    srcList.innerHTML = "";
+    (data.sources || []).forEach(function(s){
+      var li = document.createElement("li");
+      li.className = "source-chip" + (s.ok ? "" : " fail");
+      li.textContent = s.name + (s.ok ? " · "+s.count+"건" : " · 제외됨");
+      srcList.appendChild(li);
+    });
+    document.getElementById("method-note").textContent =
+      (data.method || "") + (data.sources_note ? "  " + data.sources_note : "");
+    document.getElementById("sns-note").textContent = data.sns_note || "";
+  }
+
+  function renderSrList(kws){
+    var ul = document.getElementById("kw-sr-list");
+    ul.innerHTML = "";
+    kws.forEach(function(k){
+      var li = document.createElement("li");
+      li.textContent = k.word + " (" + k.count + "건)";
+      ul.appendChild(li);
+    });
+  }
+
+  function renderTable(kws){
+    kwTbody.innerHTML = "";
+    kws.forEach(function(k){
+      var tr = document.createElement("tr");
+      tr.tabIndex = 0;
+      var tdWord = document.createElement("td");
+      tdWord.textContent = k.word;
+      var tdCount = document.createElement("td");
+      tdCount.className = "count";
+      tdCount.textContent = k.count + "건";
+      tr.appendChild(tdWord);
+      tr.appendChild(tdCount);
+      tr.addEventListener("click", function(){ openDrawer(k); });
+      tr.addEventListener("keydown", function(e){
+        if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openDrawer(k); }
+      });
+      kwTbody.appendChild(tr);
+    });
+  }
+
+  // ---- word cloud layout (Archimedean spiral placement) ----
+  function computeLayout(kws){
+    var wrap = document.getElementById("cloud-wrap");
+    var cssWidth = Math.max(280, wrap.clientWidth);
+    var cssHeight = Math.min(560, Math.max(320, window.innerHeight * 0.7));
+    canvas.style.height = cssHeight + "px";
+    canvas.width = Math.round(cssWidth * state.dpr);
+    canvas.height = Math.round(cssHeight * state.dpr);
+
+    var counts = kws.map(function(k){return k.count;});
+    var maxC = Math.max.apply(null, counts);
+    var minC = Math.min.apply(null, counts);
+
+    var minFont = Math.max(13, cssWidth * 0.018);
+    var maxFont = Math.max(minFont + 10, cssWidth * 0.11);
+
+    var sqrtMin = Math.sqrt(minC), sqrtMax = Math.sqrt(maxC);
+    function fontSizeFor(c){
+      if(sqrtMax === sqrtMin) return (minFont+maxFont)/2;
+      var t = (Math.sqrt(c) - sqrtMin) / (sqrtMax - sqrtMin);
+      return minFont + t * (maxFont - minFont);
+    }
+    function colorFor(c){
+      var t = maxC === minC ? 1 : (c - minC) / (maxC - minC);
+      return mixColor(css('--accent-cool'), css('--accent-hot'), t);
+    }
+
+    // sort desc so big words placed first near center
+    var ordered = kws.slice().sort(function(a,b){ return b.count - a.count; });
+
+    var placed = [];
+    var cx = cssWidth/2, cy = cssHeight/2;
+    ctx.setTransform(state.dpr,0,0,state.dpr,0,0);
+
+    ordered.forEach(function(k){
+      var fontSize = fontSizeFor(k.count);
+      ctx.font = "700 " + fontSize + "px 'Noto Sans KR', sans-serif";
+      var metrics = ctx.measureText(k.word);
+      var w = metrics.width + fontSize*0.3;
+      var h = fontSize * 1.15;
+
+      var pos = findSpot(cx, cy, w, h, placed, cssWidth, cssHeight);
+      placed.push({
+        word:k.word, count:k.count, articles:k.articles||[],
+        x:pos.x, y:pos.y, w:w, h:h,
+        fontSize:fontSize, color:colorFor(k.count)
+      });
+    });
+
+    state.layout = placed;
+  }
+
+  function overlaps(a,b){
+    return !(a.x + a.w/2 < b.x - b.w/2 ||
+             a.x - a.w/2 > b.x + b.w/2 ||
+             a.y + a.h/2 < b.y - b.h/2 ||
+             a.y - a.h/2 > b.y + b.h/2);
+  }
+
+  function findSpot(cx, cy, w, h, placed, boundW, boundH){
+    var box = {x:cx, y:cy, w:w, h:h};
+    var maxR = Math.sqrt(boundW*boundW + boundH*boundH) / 1.6;
+    var angle = 0;
+    var radius = 0;
+    var step = 6;
+    var angleStep = 0.32;
+    var attempts = 0;
+    while(attempts < 2400){
+      box.x = cx + radius * Math.cos(angle);
+      box.y = cy + radius * Math.sin(angle) * 0.72; // squash vertically to fill wide canvas
+      var fits = box.x - box.w/2 > 4 && box.x + box.w/2 < boundW - 4 &&
+                 box.y - box.h/2 > 4 && box.y + box.h/2 < boundH - 4;
+      if(fits){
+        var collide = false;
+        for(var i=0;i<placed.length;i++){
+          if(overlaps(box, placed[i])){ collide = true; break; }
+        }
+        if(!collide) return {x:box.x, y:box.y};
+      }
+      angle += angleStep;
+      radius += step / (2*Math.PI) * angleStep * 8;
+      if(radius > maxR){ radius = 0; angle += 1.3; step *= 1.02; }
+      attempts++;
+    }
+    return {x:cx, y:cy};
+  }
+
+  function drawCloud(){
+    ctx.setTransform(state.dpr,0,0,state.dpr,0,0);
+    var w = canvas.width / state.dpr, h = canvas.height / state.dpr;
+    ctx.clearRect(0,0,w,h);
+    state.layout.forEach(function(item){
+      ctx.font = "700 " + item.fontSize + "px 'Noto Sans KR', sans-serif";
+      ctx.fillStyle = item.color;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(item.word, item.x, item.y);
+    });
+  }
+
+  canvas.addEventListener("click", function(e){
+    var rect = canvas.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    for(var i=0;i<state.layout.length;i++){
+      var it = state.layout[i];
+      if(Math.abs(x - it.x) < it.w/2 && Math.abs(y - it.y) < it.h/2){
+        openDrawer(it);
+        return;
+      }
+    }
+  });
+
+  function openDrawer(k){
+    drawerWord.textContent = k.word;
+    drawerCount.textContent = k.count + "건";
+    drawerBody.innerHTML = "";
+    var arts = k.articles || [];
+    if(arts.length === 0){
+      var p = document.createElement("p");
+      p.style.color = "var(--fg-muted)";
+      p.style.fontSize = "13px";
+      p.textContent = "연결된 기사 링크가 없습니다.";
+      drawerBody.appendChild(p);
+    } else {
+      arts.forEach(function(a){
+        var link = document.createElement("a");
+        link.className = "article-item";
+        link.href = a.u;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        var t = document.createElement("div");
+        t.className = "article-title";
+        t.textContent = a.t;
+        var s = document.createElement("div");
+        s.className = "article-src";
+        s.textContent = a.s;
+        link.appendChild(t);
+        link.appendChild(s);
+        drawerBody.appendChild(link);
+      });
+    }
+    scrim.classList.add("open");
+    drawer.classList.add("open");
+  }
+  function closeDrawer(){
+    scrim.classList.remove("open");
+    drawer.classList.remove("open");
+  }
+  drawerClose.addEventListener("click", closeDrawer);
+  scrim.addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeDrawer();
+  });
+
+  viewToggle.addEventListener("click", function(){
+    state.tableMode = !state.tableMode;
+    document.getElementById("cloud-wrap").hidden = state.tableMode;
+    document.querySelector(".legend").hidden = state.tableMode;
+    kwTable.hidden = !state.tableMode;
+    viewToggle.textContent = state.tableMode ? "구름으로 보기" : "표로 보기";
+  });
+
+  var resizeTimer;
+  window.addEventListener("resize", function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      if(state.data && state.data.keywords){
+        computeLayout(state.data.keywords);
+        drawCloud();
+      }
+    }, 180);
+  });
+
+  fetchData();
+})();
+</script>

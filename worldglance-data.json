@@ -1,0 +1,964 @@
+{
+  "collected_at": "2026-09-30 09:40 KST",
+  "date": "2026-09-30",
+  "method": "전자신문/한국경제/디지털데일리 기사 제목 143건(중복 제거 후 135건)을 단순 공백 분절 + 조사 제거 + 불용어 제거로 처리해 단어 빈도를 계산했습니다. 형태소 분석기가 아니라 규칙 기반 처리라 정확도에 한계가 있습니다.",
+  "sources": [
+    {
+      "name": "한국경제 전체기사",
+      "url": "https://www.hankyung.com/feed/all-news",
+      "ok": true,
+      "count": 44
+    },
+    {
+      "name": "한국경제 정치",
+      "url": "https://www.hankyung.com/feed/politics",
+      "ok": true,
+      "count": 32
+    },
+    {
+      "name": "한국경제 연예",
+      "url": "https://www.hankyung.com/feed/entertainment",
+      "ok": true,
+      "count": 13
+    },
+    {
+      "name": "한국경제 사회",
+      "url": "https://www.hankyung.com/feed/society",
+      "ok": true,
+      "count": 14
+    },
+    {
+      "name": "한국경제 IT과학",
+      "url": "https://www.hankyung.com/feed/it",
+      "ok": true,
+      "count": 14
+    },
+    {
+      "name": "전자신문",
+      "url": "https://rss.etnews.com/Section901~903.xml",
+      "ok": true,
+      "count": 21
+    },
+    {
+      "name": "디지털데일리",
+      "url": "https://www.ddaily.co.kr/rss/rss.xml",
+      "ok": true,
+      "count": 3
+    },
+    {
+      "name": "한국경제 스포츠",
+      "url": "https://www.hankyung.com/feed/sports",
+      "ok": false,
+      "count": 0
+    }
+  ],
+  "sources_note": "한국경제 스포츠 RSS는 8월 하순 기사만 나와 최신성이 없어 이번 집계에서 제외했습니다.",
+  "sns_note": "SNS(X·인스타그램·페이스북·틱톡 등)는 로그인 없이 크롤링이 막혀 있어 아직 반영하지 못했습니다. 대신 YouTube 공식 API로 보완을 검토 중입니다.",
+  "keywords": [
+    {
+      "word": "AI",
+      "count": 22,
+      "articles": [
+        {
+          "t": "AI '안전'과 '확장' 사이…앤트로픽과 메타의 다른 승부수",
+          "u": "https://www.hankyung.com/article/202609293089i",
+          "s": "한국경제"
+        },
+        {
+          "t": "中 AI도 '거짓말·위조'드러나…알리바바·딥시크 에이전트 기만행동",
+          "u": "https://www.hankyung.com/article/202609293066i",
+          "s": "한국경제"
+        },
+        {
+          "t": "앤스로픽 투자설명서,\"AI,시스템종료에 저항,정보은폐,협박\"경고",
+          "u": "https://www.hankyung.com/article/202609292966i",
+          "s": "한국경제"
+        },
+        {
+          "t": "AI와 인간, 공존의 길",
+          "u": "https://www.hankyung.com/article/2026092928101",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "한국",
+      "count": 5,
+      "articles": [
+        {
+          "t": "\"일본 남성은 솔직히 부족\"…한국 남편 찾는 일본 여성들",
+          "u": "https://www.hankyung.com/article/2026092930837",
+          "s": "한국경제"
+        },
+        {
+          "t": "日 육상자위대 수장, 17년 만에 한국 공식 방문…\"안보·방위 협력\"",
+          "u": "https://www.hankyung.com/article/2026092930507",
+          "s": "한국경제"
+        },
+        {
+          "t": "한국 여자축구, 日에 0-2 패 '결승행 좌절'…중국과 동메달전",
+          "u": "https://www.hankyung.com/article/2026092930487",
+          "s": "한국경제"
+        },
+        {
+          "t": "'한국·파키스탄 버스 바꿔 태웠다'…결국 훈련도 못한 韓",
+          "u": "https://www.hankyung.com/article/2026092930207",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "북한",
+      "count": 5,
+      "articles": [
+        {
+          "t": "북한 외무성 부상 \"핵 보유국 지위, 무엇으로도 되돌릴 수 없다\"",
+          "u": "https://www.hankyung.com/article/202609290570i",
+          "s": "한국경제"
+        },
+        {
+          "t": "한동훈 \"만약 5·18이 북한 소행이라는 영화가 개봉됐다면?\"",
+          "u": "https://www.hankyung.com/article/202609289708H",
+          "s": "한국경제"
+        },
+        {
+          "t": "與 \"우크라 지원 재검토해야\"…野 \"북한 비위 맞추느냐\"",
+          "u": "https://www.hankyung.com/article/202609289176H",
+          "s": "한국경제"
+        },
+        {
+          "t": "'북한 피로감' 최고치…\"통일보다 현재가 낫다\"",
+          "u": "https://www.hankyung.com/article/202609289028i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "삼성",
+      "count": 4,
+      "articles": [
+        {
+          "t": "\"삼성 5억씩 푼다\" 직원들 들썩이더니…집값 치솟은 동네",
+          "u": "https://www.hankyung.com/article/2026092927371",
+          "s": "한국경제"
+        },
+        {
+          "t": "李대통령, 29일 메가프로젝트 점검…삼성·SK와 정주여건 지원안 논의",
+          "u": "https://www.hankyung.com/article/2026092887867",
+          "s": "한국경제"
+        },
+        {
+          "t": "삼성, AI 데이터센터 '판' 짠다…美 AI인프라 기업에 1.4조 투자",
+          "u": "https://www.etnews.com/20260929000238",
+          "s": "전자신문"
+        },
+        {
+          "t": "TSMC 파운드리 3~6% 인상 전망…삼성·인텔·후공정도 영향권",
+          "u": "https://www.etnews.com/20260925000007",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "지뢰",
+      "count": 4,
+      "articles": [
+        {
+          "t": "나경원, '지뢰 참사' 진상규명 결의안 발의…한동훈·이준석 동참",
+          "u": "https://www.hankyung.com/article/2026092930147",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"비겁한 늑장 대응\"…국힘, 軍 'DMZ 북 지뢰 추정' 발표 비판",
+          "u": "https://www.hankyung.com/article/2026092805017",
+          "s": "한국경제"
+        },
+        {
+          "t": "짙어지는 '北 지뢰' 정황…\"확인 땐 상응 대응\"",
+          "u": "https://www.hankyung.com/article/2026092802031",
+          "s": "한국경제"
+        },
+        {
+          "t": "장병들 \"북한 지뢰 봤다\" 증언도…野 \"軍, 국민이 졸로 보이나\"",
+          "u": "https://www.hankyung.com/article/202609288299H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "李대통령",
+      "count": 4,
+      "articles": [
+        {
+          "t": "李대통령 \"결혼하면 손해? 이젠 아냐\"…신혼부부 숨통 트이나",
+          "u": "https://www.hankyung.com/article/202609290838H",
+          "s": "한국경제"
+        },
+        {
+          "t": "장동혁 \"민심 역행하면 남는 길은 탄핵\"…李대통령 향한 맹공",
+          "u": "https://www.hankyung.com/article/2026092899037",
+          "s": "한국경제"
+        },
+        {
+          "t": "조경태 \"李대통령 순방, 국익적 관점에서 긍정적\"",
+          "u": "https://www.hankyung.com/article/202609289457i",
+          "s": "한국경제"
+        },
+        {
+          "t": "李대통령, 29일 메가프로젝트 점검…삼성·SK와 정주여건 지원안 논의",
+          "u": "https://www.hankyung.com/article/2026092887867",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "안전",
+      "count": 3,
+      "articles": [
+        {
+          "t": "AI '안전'과 '확장' 사이…앤트로픽과 메타의 다른 승부수",
+          "u": "https://www.hankyung.com/article/202609293089i",
+          "s": "한국경제"
+        },
+        {
+          "t": "'전쟁 홍보' 매몰된 젤렌스키…송환 공개 北포로 안전 위협",
+          "u": "https://www.hankyung.com/article/2026092802051",
+          "s": "한국경제"
+        },
+        {
+          "t": "고금리·수익 논란·안전 문제까지…흔들리는 AI '스케일업'",
+          "u": "https://www.hankyung.com/article/2026092927751",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "조희대",
+      "count": 3,
+      "articles": [
+        {
+          "t": "靑, 조희대 직격…\"마음대로 대법관 앉히는 게 사법부 독립은 아냐\"",
+          "u": "https://www.hankyung.com/article/2026092930557",
+          "s": "한국경제"
+        },
+        {
+          "t": "국회 법사위, 조희대 국감 증인 채택",
+          "u": "https://www.hankyung.com/article/2026092802041",
+          "s": "한국경제"
+        },
+        {
+          "t": "與 \"조희대, 재제청 수용 보고받고 격노…행정처 의견 묵살 의혹\"",
+          "u": "https://www.hankyung.com/article/202609288908i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "영화",
+      "count": 3,
+      "articles": [
+        {
+          "t": "\"영화는 되고 배재고는 안 되고?\"…'이중 잣대' 논란 불붙었다",
+          "u": "https://www.hankyung.com/article/202609291967H",
+          "s": "한국경제"
+        },
+        {
+          "t": "한동훈 \"만약 5·18이 북한 소행이라는 영화가 개봉됐다면?\"",
+          "u": "https://www.hankyung.com/article/202609289708H",
+          "s": "한국경제"
+        },
+        {
+          "t": "'오디세이' 제치고 50일 만에 1위 먹은 韓 영화…최민식X한소희 '인턴'",
+          "u": "https://www.hankyung.com/article/202609171120H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "한동훈",
+      "count": 3,
+      "articles": [
+        {
+          "t": "나경원, '지뢰 참사' 진상규명 결의안 발의…한동훈·이준석 동참",
+          "u": "https://www.hankyung.com/article/2026092930147",
+          "s": "한국경제"
+        },
+        {
+          "t": "한동훈 \"만약 5·18이 북한 소행이라는 영화가 개봉됐다면?\"",
+          "u": "https://www.hankyung.com/article/202609289708H",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"쇼하는 것 좋아해\"…또다시 한동훈 때리는 野 당권파",
+          "u": "https://www.hankyung.com/article/202609288817H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "경고",
+      "count": 3,
+      "articles": [
+        {
+          "t": "앤스로픽 투자설명서,\"AI,시스템종료에 저항,정보은폐,협박\"경고",
+          "u": "https://www.hankyung.com/article/202609292966i",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"AI 지능 폭발 임박…통제 못하면 인류 멸망\" 무서운 경고",
+          "u": "https://www.hankyung.com/article/2026092906427",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"AI가 AI 개발 가속\"…'지능 폭발' 경고 속 빅테크 행보 엇갈려",
+          "u": "https://www.etnews.com/20260929000262",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "증인",
+      "count": 3,
+      "articles": [
+        {
+          "t": "이재용·최태원 국감 증인 놓고 '충돌'…여야, '호남 반도체' 공방",
+          "u": "https://www.hankyung.com/article/2026092802877",
+          "s": "한국경제"
+        },
+        {
+          "t": "국회 법사위, 조희대 국감 증인 채택",
+          "u": "https://www.hankyung.com/article/2026092802041",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"구글·배민 대표 나와라\"…국회, 국정감사 증인 채택 의결",
+          "u": "https://www.hankyung.com/article/2026092898727",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "급증",
+      "count": 3,
+      "articles": [
+        {
+          "t": "하이브 앤팀·JYP 넥스지…日기반 아이돌 검색 급증",
+          "u": "https://www.hankyung.com/article/2026092062711",
+          "s": "한국경제"
+        },
+        {
+          "t": "대형 막히자 '9㎿'로 몰린다…수도권 '소형 AIDC' 급증",
+          "u": "https://www.etnews.com/20260928000329",
+          "s": "전자신문"
+        },
+        {
+          "t": "[단독] 공공SW 대기업 참여제한 예외 급증…\"심의 건수 전년 比 51%↑\"",
+          "u": "https://www.etnews.com/20260927000070",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "1위",
+      "count": 3,
+      "articles": [
+        {
+          "t": "'오디세이' 제치고 50일 만에 1위 먹은 韓 영화…최민식X한소희 '인턴'",
+          "u": "https://www.hankyung.com/article/202609171120H",
+          "s": "한국경제"
+        },
+        {
+          "t": "임영웅 '또또' 인기 거세다…빌보드코리아 '글로벌 K송' 1위",
+          "u": "https://www.hankyung.com/article/202609170992H",
+          "s": "한국경제"
+        },
+        {
+          "t": "'클로드' 국내 AI 앱 2위 굳히기…1위는 챗GPT",
+          "u": "https://www.etnews.com/20260925000038",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "데이터센터",
+      "count": 3,
+      "articles": [
+        {
+          "t": "삼성, AI 데이터센터 '판' 짠다…美 AI인프라 기업에 1.4조 투자",
+          "u": "https://www.etnews.com/20260929000238",
+          "s": "전자신문"
+        },
+        {
+          "t": "LG전자, '블록형 냉각설비' 모듈러 솔루션 공개…AI 데이터센터 구축기간 줄인다",
+          "u": "https://www.etnews.com/20260929000109",
+          "s": "전자신문"
+        },
+        {
+          "t": "LG전자, 엔비디아 '냉각 파트너' 됐다…MW급 AI 데이터센터 수주전 탄력",
+          "u": "https://www.etnews.com/20260927000014",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "데이터",
+      "count": 2,
+      "articles": [
+        {
+          "t": "AI모델 데이터 4년새 5000배…\"GPU 다음 병목은 스토리지\"",
+          "u": "https://www.hankyung.com/article/202609303126i",
+          "s": "한국경제"
+        },
+        {
+          "t": "휴대폰 수십억개 데이터 한 곳에…넷앱 '제타바이트 데이터저장소' 공개",
+          "u": "https://www.hankyung.com/article/202609290589i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "최고치",
+      "count": 2,
+      "articles": [
+        {
+          "t": "美 30년물국채 수익률 5.609%…2002년 이후 최고치",
+          "u": "https://www.hankyung.com/article/202609303116i",
+          "s": "한국경제"
+        },
+        {
+          "t": "'북한 피로감' 최고치…\"통일보다 현재가 낫다\"",
+          "u": "https://www.hankyung.com/article/202609289028i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "메모리",
+      "count": 2,
+      "articles": [
+        {
+          "t": "마이크론 순익 940% 폭증 예상…메모리 '정점론'잠재울까",
+          "u": "https://www.hankyung.com/article/202609293017i",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"HBM 판매가 내년 121% 오른다\"…삼전·닉스 메모리 호황 2027년에도",
+          "u": "https://www.hankyung.com/article/202609293035i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "일본",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"일본 남성은 솔직히 부족\"…한국 남편 찾는 일본 여성들",
+          "u": "https://www.hankyung.com/article/2026092930837",
+          "s": "한국경제"
+        },
+        {
+          "t": "일본, 전기요금 1만엔 돌파…가정집 '비명' 터졌다",
+          "u": "https://www.hankyung.com/article/2026092930387",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "중국",
+      "count": 2,
+      "articles": [
+        {
+          "t": "男배구, 중국과 풀세트 접전 끝 2-3 패…8강서 이란과 맞붙는다",
+          "u": "https://www.hankyung.com/article/2026092930737",
+          "s": "한국경제"
+        },
+        {
+          "t": "한국 여자축구, 日에 0-2 패 '결승행 좌절'…중국과 동메달전",
+          "u": "https://www.hankyung.com/article/2026092930487",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "에이전트",
+      "count": 2,
+      "articles": [
+        {
+          "t": "中 AI도 '거짓말·위조'드러나…알리바바·딥시크 에이전트 기만행동",
+          "u": "https://www.hankyung.com/article/202609293066i",
+          "s": "한국경제"
+        },
+        {
+          "t": "오픈AI AI 에이전트, 캡차 우회 위해 다른 AI까지 동원 시도",
+          "u": "https://www.hankyung.com/article/202609290985i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "앤스로픽",
+      "count": 2,
+      "articles": [
+        {
+          "t": "앤스로픽 투자설명서,\"AI,시스템종료에 저항,정보은폐,협박\"경고",
+          "u": "https://www.hankyung.com/article/202609292966i",
+          "s": "한국경제"
+        },
+        {
+          "t": "앤스로픽, 매출 6조인데 손실은 10조…적자에도 몸값 '폭등'",
+          "u": "https://www.hankyung.com/article/202609292955i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "협박",
+      "count": 2,
+      "articles": [
+        {
+          "t": "앤스로픽 투자설명서,\"AI,시스템종료에 저항,정보은폐,협박\"경고",
+          "u": "https://www.hankyung.com/article/202609292966i",
+          "s": "한국경제"
+        },
+        {
+          "t": "'박나래 협박' 전 매니저, 첫 재판서 혐의 부인…\"정당한 퇴직금 요구였다\"",
+          "u": "https://www.hankyung.com/article/2026092929707",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "김어준",
+      "count": 2,
+      "articles": [
+        {
+          "t": "김어준 조언에도…李 또 SNS \"내가 리트윗하는 이유는\" 해명",
+          "u": "https://www.hankyung.com/article/202609292819H",
+          "s": "한국경제"
+        },
+        {
+          "t": "김어준, 또 李 대통령에 쓴소리…\"SNS에 리트윗 하지 마라\"",
+          "u": "https://www.hankyung.com/article/202609289362H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "해명",
+      "count": 2,
+      "articles": [
+        {
+          "t": "김어준 조언에도…李 또 SNS \"내가 리트윗하는 이유는\" 해명",
+          "u": "https://www.hankyung.com/article/202609292819H",
+          "s": "한국경제"
+        },
+        {
+          "t": "강신철 장관 '양복 순시' 논란…\"군복은 군인만\" 국방부 해명",
+          "u": "https://www.hankyung.com/article/202609289694H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "DMZ",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"비겁한 늑장 대응\"…국힘, 軍 'DMZ 북 지뢰 추정' 발표 비판",
+          "u": "https://www.hankyung.com/article/2026092805017",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"탄핵 넘어 이적행위\"…野, DMZ 조사 지연에 李 정조준",
+          "u": "https://www.hankyung.com/article/202609288632H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "젤렌스키",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"6개월 된 초보 정치인\"이라더니…李·젤렌스키 또 충돌",
+          "u": "https://www.hankyung.com/article/202609289673H",
+          "s": "한국경제"
+        },
+        {
+          "t": "'전쟁 홍보' 매몰된 젤렌스키…송환 공개 北포로 안전 위협",
+          "u": "https://www.hankyung.com/article/2026092802051",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "충돌",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"6개월 된 초보 정치인\"이라더니…李·젤렌스키 또 충돌",
+          "u": "https://www.hankyung.com/article/202609289673H",
+          "s": "한국경제"
+        },
+        {
+          "t": "이재용·최태원 국감 증인 놓고 '충돌'…여야, '호남 반도체' 공방",
+          "u": "https://www.hankyung.com/article/2026092802877",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "탄핵",
+      "count": 2,
+      "articles": [
+        {
+          "t": "장동혁 \"민심 역행하면 남는 길은 탄핵\"…李대통령 향한 맹공",
+          "u": "https://www.hankyung.com/article/2026092899037",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"탄핵 넘어 이적행위\"…野, DMZ 조사 지연에 李 정조준",
+          "u": "https://www.hankyung.com/article/202609288632H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "이재용",
+      "count": 2,
+      "articles": [
+        {
+          "t": "이재용·최태원 국감 증인 놓고 '충돌'…여야, '호남 반도체' 공방",
+          "u": "https://www.hankyung.com/article/2026092802877",
+          "s": "한국경제"
+        },
+        {
+          "t": "젠슨 황 수상 무대서 뭉친 이재용·최태원…'AI 동맹' 과시",
+          "u": "https://www.etnews.com/20260929000181",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "최태원",
+      "count": 2,
+      "articles": [
+        {
+          "t": "이재용·최태원 국감 증인 놓고 '충돌'…여야, '호남 반도체' 공방",
+          "u": "https://www.hankyung.com/article/2026092802877",
+          "s": "한국경제"
+        },
+        {
+          "t": "젠슨 황 수상 무대서 뭉친 이재용·최태원…'AI 동맹' 과시",
+          "u": "https://www.etnews.com/20260929000181",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "국감",
+      "count": 2,
+      "articles": [
+        {
+          "t": "이재용·최태원 국감 증인 놓고 '충돌'…여야, '호남 반도체' 공방",
+          "u": "https://www.hankyung.com/article/2026092802877",
+          "s": "한국경제"
+        },
+        {
+          "t": "국회 법사위, 조희대 국감 증인 채택",
+          "u": "https://www.hankyung.com/article/2026092802041",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "여야",
+      "count": 2,
+      "articles": [
+        {
+          "t": "이재용·최태원 국감 증인 놓고 '충돌'…여야, '호남 반도체' 공방",
+          "u": "https://www.hankyung.com/article/2026092802877",
+          "s": "한국경제"
+        },
+        {
+          "t": "'MBK 김병주 불기소 가닥'에 여야 반발…\"판단 근거 밝혀야\"",
+          "u": "https://www.hankyung.com/article/202609288253g",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "국회",
+      "count": 2,
+      "articles": [
+        {
+          "t": "국회 법사위, 조희대 국감 증인 채택",
+          "u": "https://www.hankyung.com/article/2026092802041",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"구글·배민 대표 나와라\"…국회, 국정감사 증인 채택 의결",
+          "u": "https://www.hankyung.com/article/2026092898727",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "채택",
+      "count": 2,
+      "articles": [
+        {
+          "t": "국회 법사위, 조희대 국감 증인 채택",
+          "u": "https://www.hankyung.com/article/2026092802041",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"구글·배민 대표 나와라\"…국회, 국정감사 증인 채택 의결",
+          "u": "https://www.hankyung.com/article/2026092898727",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "대표",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"구글·배민 대표 나와라\"…국회, 국정감사 증인 채택 의결",
+          "u": "https://www.hankyung.com/article/2026092898727",
+          "s": "한국경제"
+        },
+        {
+          "t": "카카오 CA협의체 공동의장에…김도영 카카오X 대표 내정자",
+          "u": "https://www.hankyung.com/article/2026092800601",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "기안장2",
+      "count": 2,
+      "articles": [
+        {
+          "t": "'기안장2' PD \"기안84, 슈퍼스타 집착 못 버려…이준호 모셨다\"",
+          "u": "https://www.hankyung.com/article/202609220671H",
+          "s": "한국경제"
+        },
+        {
+          "t": "'기안장2' 기안84 \"김연경 '무섭다'고 오해…소녀 같은 면 있어\"",
+          "u": "https://www.hankyung.com/article/202609220553H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "기안84",
+      "count": 2,
+      "articles": [
+        {
+          "t": "'기안장2' PD \"기안84, 슈퍼스타 집착 못 버려…이준호 모셨다\"",
+          "u": "https://www.hankyung.com/article/202609220671H",
+          "s": "한국경제"
+        },
+        {
+          "t": "'기안장2' 기안84 \"김연경 '무섭다'고 오해…소녀 같은 면 있어\"",
+          "u": "https://www.hankyung.com/article/202609220553H",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "시대",
+      "count": 2,
+      "articles": [
+        {
+          "t": "30년간 '쉬운 수학'만 좇은 한국…AI 시대 '보복'이 시작됐다",
+          "u": "https://www.hankyung.com/article/2026092926911",
+          "s": "한국경제"
+        },
+        {
+          "t": "개인정보위, 법률·AI교수 합류…'1조 과징금 시대' 전문성 강화",
+          "u": "https://www.hankyung.com/article/2026092926681",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "개발",
+      "count": 2,
+      "articles": [
+        {
+          "t": "대구·경북, 신약 개발 AX거점으로 '우뚝'",
+          "u": "https://www.hankyung.com/article/2026092926991",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"AI가 AI 개발 가속\"…'지능 폭발' 경고 속 빅테크 행보 엇갈려",
+          "u": "https://www.etnews.com/20260929000262",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "AMD",
+      "count": 2,
+      "articles": [
+        {
+          "t": "서울대·AMD, AI 공동연구",
+          "u": "https://www.hankyung.com/article/2026092928341",
+          "s": "한국경제"
+        },
+        {
+          "t": "AMD, 피지컬AI 기업 '월드랩스' 11조에 인수",
+          "u": "https://www.hankyung.com/article/2026092926661",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "합류",
+      "count": 2,
+      "articles": [
+        {
+          "t": "개인정보위, 법률·AI교수 합류…'1조 과징금 시대' 전문성 강화",
+          "u": "https://www.hankyung.com/article/2026092926681",
+          "s": "한국경제"
+        },
+        {
+          "t": "AI 대모 페이페이 리 교수, AMD에 합류",
+          "u": "https://www.hankyung.com/article/202609291760i",
+          "s": "한국경제"
+        }
+      ]
+    },
+    {
+      "word": "시도",
+      "count": 2,
+      "articles": [
+        {
+          "t": "오픈AI AI 에이전트, 캡차 우회 위해 다른 AI까지 동원 시도",
+          "u": "https://www.hankyung.com/article/202609290985i",
+          "s": "한국경제"
+        },
+        {
+          "t": "한국은행 직원 180여명 개인정보 유출…5년간 해킹 시도만 2000번",
+          "u": "https://www.ddaily.co.kr/page/view/2026092809273799033",
+          "s": "디지털데일리"
+        }
+      ]
+    },
+    {
+      "word": "교수",
+      "count": 2,
+      "articles": [
+        {
+          "t": "AI 대모 페이페이 리 교수, AMD에 합류",
+          "u": "https://www.hankyung.com/article/202609291760i",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"3명 중 1명은 결혼하면 안 된다\"…中 72세 교수 작심 발언에 온라인 '시끌'",
+          "u": "https://www.etnews.com/20260929000095",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "지능",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"AI 지능 폭발 임박…통제 못하면 인류 멸망\" 무서운 경고",
+          "u": "https://www.hankyung.com/article/2026092906427",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"AI가 AI 개발 가속\"…'지능 폭발' 경고 속 빅테크 행보 엇갈려",
+          "u": "https://www.etnews.com/20260929000262",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "폭발",
+      "count": 2,
+      "articles": [
+        {
+          "t": "\"AI 지능 폭발 임박…통제 못하면 인류 멸망\" 무서운 경고",
+          "u": "https://www.hankyung.com/article/2026092906427",
+          "s": "한국경제"
+        },
+        {
+          "t": "\"AI가 AI 개발 가속\"…'지능 폭발' 경고 속 빅테크 행보 엇갈려",
+          "u": "https://www.etnews.com/20260929000262",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "사업",
+      "count": 2,
+      "articles": [
+        {
+          "t": "2200억 K-에듀파인 고도화 사업, 아이티센엔텍 수주",
+          "u": "https://www.etnews.com/20260929000352",
+          "s": "전자신문"
+        },
+        {
+          "t": "행안부, 범정부 재난안전 AX 종합계획 수립…2030년까지 50개 사업 9400억원 투입",
+          "u": "https://www.ddaily.co.kr/page/view/2026092810003076183",
+          "s": "디지털데일리"
+        }
+      ]
+    },
+    {
+      "word": "인상",
+      "count": 2,
+      "articles": [
+        {
+          "t": "전기차 사려면 서둘러야…보조금 기준 변경에 CLA·아이오닉 5 실구매가 인상",
+          "u": "https://www.etnews.com/20260929000121",
+          "s": "전자신문"
+        },
+        {
+          "t": "TSMC 파운드리 3~6% 인상 전망…삼성·인텔·후공정도 영향권",
+          "u": "https://www.etnews.com/20260925000007",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "로봇",
+      "count": 2,
+      "articles": [
+        {
+          "t": "10월 공모주 청약 러시…로봇·AI 줄줄이 상장",
+          "u": "https://www.etnews.com/20260929000204",
+          "s": "전자신문"
+        },
+        {
+          "t": "'마라톤 로봇' 라이보, 물속 걷는다…라이온로보틱스, 내년 판매 목표",
+          "u": "https://www.etnews.com/20260927000064",
+          "s": "전자신문"
+        }
+      ]
+    },
+    {
+      "word": "LG전자",
+      "count": 2,
+      "articles": [
+        {
+          "t": "LG전자, '블록형 냉각설비' 모듈러 솔루션 공개…AI 데이터센터 구축기간 줄인다",
+          "u": "https://www.etnews.com/20260929000109",
+          "s": "전자신문"
+        },
+        {
+          "t": "LG전자, 엔비디아 '냉각 파트너' 됐다…MW급 AI 데이터센터 수주전 탄력",
+          "u": "https://www.etnews.com/20260927000014",
+          "s": "전자신문"
+        }
+      ]
+    }
+  ]
+}
